@@ -172,7 +172,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             let text = snapshotValue["MessageBody"]!
             let sender = snapshotValue["Sender"]!
             
-            print(text, sender)
+            let message = Message()
+            message.messageBody = text
+            message.sender = sender
+            
+            self.messageArray.append(message)
+            
+            self.configureTableView()
+            self.messageTableView.reloadData()
             
         })
     }
