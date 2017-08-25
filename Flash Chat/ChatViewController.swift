@@ -116,6 +116,12 @@ class ChatViewController: UIViewController {
             print("error: there was a problem signing out")
         }
         
+        guard (navigationController?.popToRootViewController(animated: true)) != nil
+            else {
+                print("No View Controllers to pop off")
+                return
+        }
+        
     }
     
 
