@@ -40,7 +40,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
 
         //TODO: Register your MessageCell.xib file here:
-
+        messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
+        
+        configureTableView()
         
     }
 
@@ -55,11 +57,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
         
+        let messageArray = ["First Message", "Second Message", "Third Message"]
+        
+        cell.messageBody.text = messageArray[indexPath.row]
+        
+        return cell
+        
     }
     
     
     //TODO: Declare numberOfRowsInSection here:
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
     
     
     //TODO: Declare tableViewTapped here:
@@ -67,7 +77,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     //TODO: Declare configureTableView here:
-    
+    func configureTableView() {
+        messageTableView.rowHeight = UITableViewAutomaticDimension
+        messageTableView.estimatedRowHeight = 120.0
+    }
     
     
     ///////////////////////////////////////////
